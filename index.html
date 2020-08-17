@@ -6,9 +6,13 @@
 </head>
 <body>
   <p>
-  <input type="file" onchange="onFileSelected(this)">
+  <a onclick="copyText(this.innerHTML)">Hello</a>
   </p>
-  <canvas id="canvas"></canvas>
+  <p>
+    <input type="file" onchange="loadImage(this)">
+  </p>
+  <div id="base64ImageTagsContainer">
+  </div>
 </body>
 <script src="main.js"></script>
 </html>

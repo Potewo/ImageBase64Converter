@@ -1,30 +1,20 @@
-function onFileSelected(input) {
-  var file = input.files[0];
-  var reader = new FileReader();
-  reader.onload = onFileLoaded;
-  reader.readAsDataURL(file);
+function loadImage(obj) {
+  var base64ImageTagsContainer = document.getElementById("base64ImageTagsContainer");
+  var fileReader = new FileReader();
+  var base64 = "";
+  fileReader.onload = (function() {
+    base64 = fileReader.result;
+    base64ImageTagsContainer.insertAdjacentHTML("beforeend", "<a onclick='copyText(this.innerHTML)' ><img src='" + base64 + "'></a>")
+  });
+  fileReader.readAsDataURL(obj.files[0]);
 }
 
-function onFileLoaded(e) {
-  var src_data = e.target.result;
-  var img = new Image();
-  img.onload = onImageSetted;
-  img.src = src_data;
+function copyText(text) {
+  var copyForm = document.createElement("textarea");
+  copyForm.textContent = text;
+  var bodyElm = document.getElementsByTagName("body")[0];
+  bodyElm.appendChild(copyForm);
+  copyForm.select();
+  document.execCommand("copy");
+  bodyElm.removeChild(copyForm);
 }
-
-function onImageSetted(e) {
-  var data = createImageData(e.target);
-  document.getElementById('canvas').getContext('2d').putImageData(data, 0, 0,);
-}
-
-function createImageData(img) {
-  var cv = document.createElement('canvas');
-  cv.width = 0;
-  cv.height = 0;
-  var ct = cv.getContext('2d');
-  ct.drawImage(img, 0, 0);
-  var data = ct.getImageData(0, 0, cv.width, cv.height);
-  return data;
-}
-
-
