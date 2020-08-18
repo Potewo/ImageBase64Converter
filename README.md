@@ -1,4 +1,4 @@
-# ImageBase64Converter
+# MarkdownImageBase64Converter
 jpegやpngでの画像をbase64に変換してMarkdownファイルに挿入するプログラムです。
 素のHTMLとJavascriptのみで作られているのでどんな環境でも実行することができます。
 自動で最大700pxにリサイズされます。
