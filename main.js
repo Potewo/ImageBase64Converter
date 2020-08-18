@@ -4,10 +4,12 @@ function insertImgTag() {
   markdownArea.value = markdownArea.value.substr(0, markdownArea.selectionStart) + base64ImgTag + markdownArea.value.substr(markdownArea.selectionStart);
   reloadMarked();
 }
+
 function loadMarkdown(obj) {
   var markdownReader = new FileReader();
   markdownReader.onload = (function() {
     document.getElementById("markdown-area").value = markdownReader.result;
+    reloadMarked();
   });
   markdownReader.readAsText(obj.files[0]);
 }
