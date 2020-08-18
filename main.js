@@ -1,10 +1,24 @@
+var base64ImgTag = "empty";
+function insertImgTag() {
+  var markdownArea = document.getElementById('markdown-area');
+  markdownArea.value = markdownArea.value.substr(0, markdownArea.selectionStart) + base64ImgTag + markdownArea.value.substr(markdownArea.selectionStart);
+}
+function loadMarkdown(obj) {
+  var markdownReader = new FileReader();
+  markdownReader.onload = (function() {
+    document.getElementById("markdown-area").value = markdownReader.result;
+  });
+  markdownReader.readAsText(obj.files[0]);
+}
+
 function loadImage(obj) {
   var base64ImageTagsContainer = document.getElementById("base64ImageTagsContainer");
   var fileReader = new FileReader();
   fileReader.onload = (function() {
-    console.log(fileReader.result.width);
     resized(fileReader.result, function(base64) {
-      base64ImageTagsContainer.insertAdjacentHTML("beforeend", "<a onclick='copyText(this.innerHTML)' ><img src='" + base64 + "'></a>")
+      // base64ImageTagsContainer.insertAdjacentHTML("beforeend", "<a onclick='copyText(this.innerHTML)' ><img src='" + base64 + "'></a>");
+      base64ImgTag = "<img src='" + base64 + "'>";
+      console.log("changed var");
     });
   });
   fileReader.readAsDataURL(obj.files[0]);
@@ -15,7 +29,6 @@ function resized(base64data, callback) {
   ImgB64Resize(base64data, 
     function(img_b64) {
       b64data = img_b64;
-      console.log(b64data);
       callback(b64data);
     }
   );
@@ -58,4 +71,18 @@ function copyText(text) {
   copyForm.select();
   document.execCommand("copy");
   bodyElm.removeChild(copyForm);
+}
+
+function downloadMarkdown() {
+  var markdownText = document.getElementById('markdown-area').value;
+  var blob = new Blob(
+    [markdownText],
+    { "type": "text/plain" });
+  var url = window.URL.createObjectURL(blob);
+  document.getElementById('download-link').href = url;
+}
+
+function reloadMarked() {
+  marked.setOptions({breaks : true});
+  document.getElementById("marked-content").innerHTML = marked(document.getElementById('markdown-area').value);
 }

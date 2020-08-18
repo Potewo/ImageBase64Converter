@@ -5,9 +5,18 @@
   <title>MarkdownBase64Converter</title>
 </head>
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <div>
+    <p>マークダウンファイルを選択</p>
+    <input type="file" onchange="loadMarkdown(this)">
+    <p><a href="#" onclick="insertImgTag()">挿入</a></p>
+  </div>
   <p>
     <input type="file" onchange="loadImage(this)">
   </p>
+  <p><a href="#" id="download-link" onclick="downloadMarkdown()" download="markdown-with-image.md">Markdownファイルをダウンロード</a></p>
+  <textarea id="markdown-area" name="markdown-area" wrap="off" onchange="reloadMarked()"></textarea>
+  <div id="marked-content"></div>
   <div id="base64ImageTagsContainer">
   </div>
 </body>
