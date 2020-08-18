@@ -2,6 +2,7 @@ var base64ImgTag = "empty";
 function insertImgTag() {
   var markdownArea = document.getElementById('markdown-area');
   markdownArea.value = markdownArea.value.substr(0, markdownArea.selectionStart) + base64ImgTag + markdownArea.value.substr(markdownArea.selectionStart);
+  reloadMarked();
 }
 function loadMarkdown(obj) {
   var markdownReader = new FileReader();
