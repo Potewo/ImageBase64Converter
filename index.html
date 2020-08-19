@@ -4,33 +4,38 @@
   <meta charset="UTF-8">
   <title>MarkdownBase64ImageConverter</title>
   <link rel="stylesheet" href="style.css" media="all">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <header>MarkdownBase64ImageConverter</header>
   <a href="usage.html">このサイトについて</a>
   <div>
-    <p>マークダウンファイルを選択</p>
+    <p><i class="material-icons">note_add</i>マークダウンファイルを選択</p>
     <input type="file" onchange="loadMarkdown(this)">
     <p>
       <a href="#" onclick="insertImgTag()">画像を挿入</a>
     </p>
   </div>
   <div>
-    <p>挿入する画像を選択</p>
+    <p><i class="material-icons" title="挿入する画像を選択">add_photo_alternate</i>挿入する画像を選択</p>
     <p>
       <input type="file" onchange="loadImage(this)">
     </p>
   </div>
   <div>
     <p>
-      <a href="#" id="download-link" onclick="downloadMarkdown()" download="markdown-with-image.md">Markdownファイルをダウンロード</a>
+    <a href="#" id="download-link" onclick="downloadMarkdown()" download="markdown-with-image.md"><i class="material-icons">get_app</i></i>Markdownファイルをダウンロード</a>
     </p>
   </div>
-  <textarea id="markdown-area" name="markdown-area" wrap="off" onchange="reloadMarked()"></textarea>
-  <div id="marked-content"></div>
-  <!-- <div id="base64ImageTagsContainer"> -->
+  <div id="markdown-container">
+    <p id="markdown-area-description">Markdown</p>
+    <p id="marked-content-description">プレビュー</p>
+    <textarea id="markdown-area" name="markdown-area" wrap="off" onchange="reloadMarked()"></textarea>
+    <div id="marked-content" readonly></div>
+    <!-- <div id="base64ImageTagsContainer"> -->
+    </div>
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="main.js"></script>
 </html>
