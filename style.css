@@ -10,6 +10,14 @@ header {
   margin: -20px -20px 0px -20px;
 }
 
+input {
+  display: none;
+}
+
+a.button {
+  color: black;
+}
+
 #markdown-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
