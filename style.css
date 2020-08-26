@@ -56,6 +56,26 @@ a.link {
   overflow: auto;
 }
 
+#markdown-container > #marked-content > blockquote {
+  margin: 0;
+  padding: 10px;
+  background-color: #e3e3e3;
+}
+
+#markdown-container > #marked-content > pre > code {
+  margin: 0;
+  padding: 10px;
+  display: block;
+  background-color: #e3e3e3;
+}
+
+#markdown-container > #marked-content > p > code {
+  margin: 0;
+  padding: 3px;
+  background-color: #e3e3e3;
+  border-radius: 3px;
+}
+
 #markdown-container > #markdown-area-description {
   /* height: 30px; */
   /* margin: 15px; */
