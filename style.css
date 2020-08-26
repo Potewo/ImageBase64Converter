@@ -1,5 +1,6 @@
 body {
   margin: 20px;
+  height: 100vh;
 }
 
 header {
@@ -7,7 +8,7 @@ header {
   height: 50px;
   font-size: 30px;
   padding: 14px;
-  margin: -20px -20px 0px -20px;
+  margin: -20px -20px 15px -20px;
 }
 
 input {
@@ -18,28 +19,53 @@ a.button {
   color: black;
 }
 
+div.buttons-container {
+  display: flex;
+}
+
+div.button-container {
+  margin: 10px;
+}
+
+a.link {
+  height: 15px;
+  margin: 15px;
+}
+
 #markdown-container {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  /* overflow: auto; */
+  position: absolute;
 }
 
 #markdown-container > #markdown-area {
+  position: relative;
+  height: 100%;
   grid-column: 1;
   grid-row: 2;
 }
 
-#markdown-container > #markdown-content {
-  overflow: scroll;
+#markdown-container > #marked-content {
+  position: relative;
+  height: 100%;
   grid-column: 2;
   grid-row: 2;
+  overflow: auto;
 }
 
 #markdown-container > #markdown-area-description {
+  /* height: 30px; */
+  /* margin: 15px; */
   grid-column: 1;
   grid-row: 1;
 }
 
 #markdown-container > #marked-content-description {
+  /* height: 20px; */
+  /* margin: 15px; */
   grid-column: 2;
   grid-row: 1;
 }

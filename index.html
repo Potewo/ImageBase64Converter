@@ -8,34 +8,32 @@
 </head>
 <body>
   <header>MarkdownBase64ImageConverter</header>
-  <a href="usage.html">このサイトについて</a>
-  <div>
-    <input type="file" onchange="loadMarkdown(this)" id="select-markdown">
-    <label for="select-markdown">
-      <i class="material-icons" title="マークダウンファイルを選択">note_add</i>
-    </label>
-    <p>
-    <a href="#" onclick="insertImgTag()" class="button"><i class="material-icons" title="画像を挿入">add_photo_alternate</i></a>
-    </p>
-  </div>
-  <div>
-    <p>
-    <input type="file" onchange="loadImage(this)" id="select-image">
-    <label for="select-image">
-      <i class="material-icons" title="挿入する画像を選択">photo_library</i>
-    </label>
-    </p>
-  </div>
-  <div>
-    <p>
-    <a href="#" id="download-link" class="button" onclick="downloadMarkdown()" download="markdown-with-image.md"><i class="material-icons" title="マークダウンファイルをダウンロード">get_app</i></a>
-    </p>
+  <a class="link" href="usage.html">このサイトの使い方</a>
+  <div class="buttons-container">
+    <div class="button-container">
+      <input type="file" onchange="loadMarkdown(this)" id="select-markdown">
+      <label for="select-markdown">
+        <i class="material-icons" title="マークダウンファイルを選択">insert_drive_file</i>
+      </label>
+    </div>
+    <div class="button-container">
+      <input type="file" onchange="loadImage(this)" id="select-image">
+      <label for="select-image">
+        <i class="material-icons" title="挿入する画像を選択">photo_library</i>
+      </label>
+    </div>
+    <div class="button-container">
+      <a href="#" onclick="insertImgTag()" class="button"><i class="material-icons" title="画像を挿入">add_photo_alternate</i></a>
+    </div>
+    <div class="button-container">
+      <a href="#" id="download-link" class="button" onclick="downloadMarkdown()" download="markdown-with-image.md"><i class="material-icons" title="マークダウンファイルをダウンロード">get_app</i></a>
+    </div>
   </div>
   <div id="markdown-container">
     <p id="markdown-area-description">Markdown</p>
     <p id="marked-content-description">プレビュー</p>
     <textarea id="markdown-area" name="markdown-area" wrap="off" onchange="reloadMarked()"></textarea>
-    <div id="marked-content" readonly></div>
+    <div id="marked-content"></div>
     <!-- <div id="base64ImageTagsContainer"> -->
     </div>
   </div>
