@@ -1,4 +1,4 @@
-var base64ImgTag = "empty";
+var base64ImgTag = "";
 function insertImgTag() {
   var markdownArea = document.getElementById('markdown-area');
   markdownArea.value = markdownArea.value.substr(0, markdownArea.selectionStart) + base64ImgTag + markdownArea.value.substr(markdownArea.selectionStart);
@@ -20,6 +20,7 @@ function loadImage(obj) {
   fileReader.onload = (function() {
     resized(fileReader.result, function(base64) {
       base64ImgTag = "<img src='" + base64 + "'>";
+      document.getElementById("selected-image-preview").innerHTML = "選択中の画像：<img src='" + base64 + "'>";
     });
   });
   fileReader.readAsDataURL(obj.files[0]);

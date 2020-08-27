@@ -46,6 +46,10 @@ a.link {
   margin: 15px;
 }
 
+#selected-image-preview > img {
+  height: 50px;
+}
+
 #markdown-container {
   width: 100%;
   display: grid;
