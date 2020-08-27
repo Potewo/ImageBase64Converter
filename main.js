@@ -19,9 +19,7 @@ function loadImage(obj) {
   var fileReader = new FileReader();
   fileReader.onload = (function() {
     resized(fileReader.result, function(base64) {
-      // base64ImageTagsContainer.insertAdjacentHTML("beforeend", "<a onclick='copyText(this.innerHTML)' ><img src='" + base64 + "'></a>");
       base64ImgTag = "<img src='" + base64 + "'>";
-      console.log("changed var");
     });
   });
   fileReader.readAsDataURL(obj.files[0]);
@@ -46,12 +44,15 @@ function ImgB64Resize(imgB64_src, callback) {
   img.onload = function() {
     // New Canvas
     var canvas = document.createElement('canvas');
-    if(img.width > img.height) {
+    if(img.width > img.height && img.width > 700) {
       resizedWidth = 700;
       resizedHeight = 700 * img.height / img.width;
-    } else {
+    } else if(img.height > img.width && img.height > 700) {
       resizedHeight = 700;
       resizedWidth = 700 + img.width / img.height;
+    } else {
+      resizedWidth = img.width;
+      resizedHeight = img.height;
     }
     canvas.width = resizedWidth;
     canvas.height = resizedHeight;
