@@ -19,6 +19,20 @@ a.button {
   color: black;
 }
 
+label, a.button {
+  padding: 5px;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+label:hover, a.button:hover {
+  background-color: #efefef;
+}
+
+i {
+  margin: auto;
+}
+
 div.buttons-container {
   display: flex;
 }
