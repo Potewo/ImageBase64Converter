@@ -50,7 +50,7 @@ function ImgB64Resize(imgB64_src, callback) {
       resizedHeight = 700 * img.height / img.width;
     } else if(img.height > img.width && img.height > 700) {
       resizedHeight = 700;
-      resizedWidth = 700 + img.width / img.height;
+      resizedWidth = 700 * img.width / img.height;
     } else {
       resizedWidth = img.width;
       resizedHeight = img.height;
